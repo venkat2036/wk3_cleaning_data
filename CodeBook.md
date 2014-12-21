@@ -2,7 +2,7 @@
 features_tidy_data.txt
 
 
-## Variable names
+## Code book
 The tidy data variables pertain to the measurements of the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
 Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
@@ -13,11 +13,13 @@ These signals were used to estimate variables of the feature vector for each pat
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
 The variable are listed below. Excepting the first two variables, the variables pertain to mean and standard deviation of these signals.
+These variables are real numbers.
+
 Note: The metric units for the variables are not clear from the raw data. 
 
-subject_id  : volunteer’s id. He underwent the tests  
+subject_id  : identity no of a volunteer who  underwent the tests. This is  integer type.
 
-activity_id   :  id for activity performed by the volunteer  
+activity_id   :  identity name for activity performed by the volunteer. This is text.  
 
 tBodyAcc_mean_X  
 
@@ -225,8 +227,20 @@ Note: Its not clear to author why mean and std values are selected for tidying t
 Note: Not much information is known about how mean and std values are selected to the author
 
 ## Study Design
-The tidy data is from merging X_train.txt with X_test.txt; subject_train.txt with subject_test.txt; and y_train.txt with y_test.txt file of the raw data.
-The merged X-train and X_test data has 561 columns. Only the columns that pertain to mean and std(standard deviation), have gone into into tidy data. The other columns in the tidy data pertain to the merged data of subjects and activities.
+run_analysis.R script’s design is as follows:
+
+Step 1: Merge X_train.txt and X-test.txt to create features data frame
+Step 2: Extract columns pertaining to mean and std (stand deviation) from features data frame. 
+        Let  features_with_mean_std be the data frame from the extracted columns. 
+        Also set up the column names based on feature_labels data frame  which is created from features.txt
+Step 3: Merge subject_train.txt and subject_test.txt to create subject_total data frame
+Step 4: Merge y_train.txt and y_test.txt to create activity_total data frame. 
+        Replace activity ids in activity_total by activity name from activity_labels data frame which is created from activity_labels.txt.
+        Let the resulting data frame be activity_total_with_names
+Step 5: Create complete_data from column binding subject_total, activity_total_with_names, and features_with_mean_std 
+Step 6: Let tidy_data be summarization of complete_data by summarizing the average of each variable 
+        for each subject, and activity in complete_data.
+
 
 ## Recipe
 run_analysis.R script provides the complete procedure for transforming raw data in to the tidy data.

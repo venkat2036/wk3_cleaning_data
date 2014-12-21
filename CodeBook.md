@@ -13,7 +13,7 @@ These signals were used to estimate variables of the feature vector for each pat
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
 The variable are listed below. Excepting the first two variables, the variables pertain to mean and standard deviation of these signals.
-These variables are real numbers. For each volunteer, and for each action, each of these variables represent a mean of these signals’ means or standard deviations.
+These variables are real numbers. For each volunteer, and for each activity, each of these variables represent a mean of these signals’ means or standard deviations.
 
 Note: The metric units for the variables are not clear from the raw data. 
 

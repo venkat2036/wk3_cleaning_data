@@ -230,15 +230,25 @@ Note: Not much information is known about how mean and std values are selected t
 run_analysis.R script’s design is as follows:
 
 Step 1: Merge X_train.txt and X-test.txt to create features data frame
+
 Step 2: Extract columns pertaining to mean and std (stand deviation) from features data frame. 
+
         Let  features_with_mean_std be the data frame from the extracted columns. 
+
         Also set up the column names based on feature_labels data frame  which is created from features.txt
+
 Step 3: Merge subject_train.txt and subject_test.txt to create subject_total data frame
+
 Step 4: Merge y_train.txt and y_test.txt to create activity_total data frame. 
+
         Replace activity ids in activity_total by activity name from activity_labels data frame which is created from activity_labels.txt.
+
         Let the resulting data frame be activity_total_with_names
+
 Step 5: Create complete_data from column binding subject_total, activity_total_with_names, and features_with_mean_std 
+
 Step 6: Let tidy_data be summarization of complete_data by summarizing the average of each variable 
+
         for each subject, and activity in complete_data.
 
 

@@ -1,5 +1,5 @@
 ## Tidy Data file Name
-features_tidy_data.txt
+features_tidy_data.txt represents tidy data.
 
 
 ## Code book
@@ -13,7 +13,7 @@ These signals were used to estimate variables of the feature vector for each pat
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
 The variable are listed below. Excepting the first two variables, the variables pertain to mean and standard deviation of these signals.
-These variables are real numbers.
+These variables are real numbers. For each volunteer, and for each action, each of these variables represent a mean of these signals’ means or standard deviations.
 
 Note: The metric units for the variables are not clear from the raw data. 
 
@@ -247,9 +247,7 @@ Step 4: Merge y_train.txt and y_test.txt to create activity_total data frame.
 
 Step 5: Create complete_data from column binding subject_total, activity_total_with_names, and features_with_mean_std 
 
-Step 6: Let tidy_data be summarization of complete_data by summarizing the average of each variable 
-
-        for each subject, and activity in complete_data.
+Step 6: Let tidy_data be summarization of complete_data by summarizing the average of each variable for each subject, and activity in complete_data.
 
 
 ## Recipe
